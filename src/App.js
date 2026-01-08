@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, Typography, Paper } from "@mui/material";
+import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
+import TrackList from "./components/TrackList";
+import Controller from "./components/Controller";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <MusicPlayerProvider>
+      <Box
+        minHeight="100vh"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        bgcolor="#111"
+      >
+        <Paper
+          elevation={6}
+          sx={{
+            width: 360,
+            height: 640,
+            borderRadius: 6,
+            p: 3,
+            background: "linear-gradient(180deg, #f3e5f5, #d1c4e9)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Box>
+            <Typography align="center" variant="h6" fontWeight={600} mb={3}>
+              Mini Spotify
+            </Typography>
+
+            <TrackList />
+          </Box>
+
+          <Controller />
+        </Paper>
+      </Box>
+    </MusicPlayerProvider>
   );
-}
+};
 
 export default App;
